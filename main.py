@@ -50,23 +50,39 @@ def remove_student():
         scores.pop(found_student)
         print("student removed seccesfully")
 
+#این تابع یک شماره دانشجویی میگیره
+# چک میکنه اگر دانشجو وجود داشت، یک نمره جدید از ما میگیره
+# و نمره جدید رو جایگزین نمره قبلی دانشجو میکنه
 def edit_student():
+    
+    # شماره دانشجویی رو اینجا گرفتیم
     stu_num = input("etner a student number for remove: ")
+    
+    # چک میکنه اگر دانشجو وجود نداشته باشه ارور میده
     if stu_num not in students_number:
         print("error this stu number not found")
+        
+    # اگر وجود داشت
     else:
         found_student = students_number.index(stu_num)
+        # یک نمره جدید از ما میگیره
         new_score = float(input("enter new score for student: "))
+        
+        # جایگزین نمره قبلی میکنه
         scores[found_student] = new_score
         print("edited student")
 
+# این تابع یک اسم از ما میگیره 
+# هر دانشجویی که اسمش با ورودی یکی باشه
+# اطلاعات شو برای ما نشون میده
 def search_student():
     student_name = input("etner student name: ")
     for name in names:
         if student_name in name:
             found = names.index(name)
             print(f"name: {names[found]} - st_number: {students_number[found]} - score: {scores[found]}\n")
-        
+
+# این تابع تعداد کل دانشجویان، میانگین نمرات شون و فردی که بالاترین نمره رو داره بهمون نشون میده     
 def show_detail():
     print(f"total students: {len(names)}")
 
