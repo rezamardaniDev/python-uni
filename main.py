@@ -37,17 +37,47 @@ def remove_student():
     
     # ابتدا یک ورودی که همون شماره دانشجویی هست از کاربر میگیریم
     stu_num = input("etner a student number for remove: ")
-    
+    if stu_num not in students_number:
+        print("error this stu number not found")
     # حالا ایندکس اون شماره دانشجویی رو پیدا میکنیم
-    found_student = students_number.index(stu_num)
-    
-    # با توجه به اینکه نام و شماره و نمره دانشجوی پیدا شده در ایندکس یکسانی قرار دارند
-    # با استفاده از متد پاپ اون دانشجو رو حذف میکنیم
-    names.pop(found_student)
-    students_number.pop(found_student)
-    scores.pop(found_student)
-    print("student removed seccesfully")
+    else:
+        found_student = students_number.index(stu_num)
 
+        # با توجه به اینکه نام و شماره و نمره دانشجوی پیدا شده در ایندکس یکسانی قرار دارند
+        # با استفاده از متد پاپ اون دانشجو رو حذف میکنیم
+        names.pop(found_student)
+        students_number.pop(found_student)
+        scores.pop(found_student)
+        print("student removed seccesfully")
+
+def edit_student():
+    stu_num = input("etner a student number for remove: ")
+    if stu_num not in students_number:
+        print("error this stu number not found")
+    else:
+        found_student = students_number.index(stu_num)
+        new_score = float(input("enter new score for student: "))
+        scores[found_student] = new_score
+        print("edited student")
+
+def search_student():
+    student_name = input("etner student name: ")
+    indexes = []
+
+    for name in names:
+        if student_name in name:
+            found_student = names.index(name)
+            if found_student not in indexes:
+                print(f"name: {names[found_student]} - st_number: {students_number[found_student]} - score: {scores[found_student]}\n")
+
+def show_detail():
+    print(f"total students: {len(names)}")
+
+    avg = sum(scores) // len(scores)
+    print(f"avg: {avg}")
+
+    found_student = scores.index(max(scores))
+    print(f"name: {names[found_student]} - st_number: {students_number[found_student]} - score: {scores[found_student]}\n")
 
 # شروع برنامه ما از اینجاست که هربار باید کاربر یک ورودی وارد کنه
 # حلقه باید بینهایت بار تکرار بشه تا فهرست هر بار نمایش داده بشه
@@ -72,7 +102,18 @@ while True:
     # اگر گزینه سه رو وارد کرد، تابع مربوط به حذف یک دانشجو اجرا بشه
     elif choices == "3":
         remove_student()
+
+    elif choices == "4":
+        edit_student()
+
+    elif choices == "5":
+        search_student()
+
+    elif choices == "6":
+        show_detail()
         
     # اگر گزینه هفت رو وارد کرد، برنامه متوقف بشه و فهرست دگه نمایش داده نشه
     elif choices == "7":
+        print("goodby")
         break
+
