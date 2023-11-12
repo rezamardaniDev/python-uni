@@ -62,14 +62,11 @@ def edit_student():
 
 def search_student():
     student_name = input("etner student name: ")
-    indexes = []
-
     for name in names:
         if student_name in name:
-            found_student = names.index(name)
-            if found_student not in indexes:
-                print(f"name: {names[found_student]} - st_number: {students_number[found_student]} - score: {scores[found_student]}\n")
-
+            found = names.index(name)
+            print(f"name: {names[found]} - st_number: {students_number[found]} - score: {scores[found]}\n")
+        
 def show_detail():
     print(f"total students: {len(names)}")
 
