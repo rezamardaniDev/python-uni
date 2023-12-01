@@ -13,8 +13,8 @@ students = {
 
 def add_new_student():
 
-    # if stu_number not in students:
-        stu_number = str(len(students) + 1)
+    stu_number = input("enter studnent number: ")
+    if stu_number not in students:
         firstname = input("Enter student firstname: ")
         lastname = input("Enter student lastname: ")
         class_number = input("enter student class number: ")
@@ -34,8 +34,8 @@ def add_new_student():
             }
         print("student seccessfully added to students list")
 
-    # else:
-    #     print("student number already")
+    else:
+        print("student number already")
 
 
 def remove_student():
@@ -50,7 +50,7 @@ def remove_student():
 def edit_student():
     stu_number = input("enter student number: ")
     if stu_number in students:
-         course = input("what course edite? (math-python-englist) ")
+         course = input("what course edite? (math-python-english) ")
          new_score = int(input("enter new score: "))
          students[stu_number]['scores'][course] = new_score
          print("score updated seccessfully")
@@ -63,6 +63,8 @@ def search_student():
         information = students.get(stu_number, "student not found!")
         for key, value in information.items():
             print(f"{key} : {value}")
+    else:
+        print("student not found")
 
 
 def display_students():
